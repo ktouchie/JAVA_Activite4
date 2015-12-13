@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 class Activite4 {
     
     public static void main(String [] args) {
@@ -15,14 +15,27 @@ class Activite4 {
         
         char loop = 'Y';
         
+        double cels = 0;
+        double fahr = 0;
+        
         while (loop == 'Y') {
         
             if (mode==1) {
                 //* Celsius to Fahrenheit *//
                 System.out.println("Please enter the temperature (°C) you wish to convert:");
+                cels = sc.nextDouble();
+                fahr = ((9/5)*cels+32);
+                fahr = roundup(fahr,1);
+                System.out.println(cels + "°C is equal to " + fahr + "°F.");
                 
             } else if (mode==2) {
                 //* Fahreheit to Celsius *//
+                System.out.println("Please enter the temperature (°F) you wish to convert:");
+                fahr = sc.nextDouble();
+                cels = (((cels-32)*5)/9);
+                cels = roundup(cels,1);
+                System.out.println(fahr + "°F is equal to " + cels + "°C.");
+                
             } else {
                 System.out.println("That is not a valid selection. Please select /"1/" or /"2/".");
             }
@@ -38,5 +51,8 @@ class Activite4 {
                 loop = 'N';
             }
         }
+    }
+    public static double roundup(double A, int B) {
+        return (double) ( (int) (A * Math.pow(10,B) + .5)) / Math.pow(10, B);
     }
 }
